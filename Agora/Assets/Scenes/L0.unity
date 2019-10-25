@@ -353,6 +353,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Podloge
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 6c2ad3cb7c70948ffbcb1497802f2b68,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 6c2ad3cb7c70948ffbcb1497802f2b68,
         type: 3}
       propertyPath: m_LocalPosition.x
