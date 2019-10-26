@@ -40,7 +40,6 @@ public class Player : MonoBehaviour
     void Init() {
         // Position and rotation
         checkpointPosition = transform.position;
-        print(checkpointPosition);
 
         // Camera
         mainCamera.transform.position = cameraTransform.position;
@@ -129,7 +128,6 @@ public class Player : MonoBehaviour
                 isCollected = true;
                 Destroy(col.gameObject);
                 GameManager.Instance.UpdateScore();
-                print(score);
             }
         }
     }
