@@ -5,9 +5,13 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [Header("General")]
-    public Rigidbody rigidBody;
+    Rigidbody rigidBody;
     public Transform groundingPosition;
     public Animator animator;
+    Vector3 checkpointPosition;
+
+    [HideInInspector]
+    public int score;
 
     [Header("Camera")]
     public GameObject mainCamera;
@@ -34,6 +38,10 @@ public class Player : MonoBehaviour
     }
 
     void Init() {
+        // Position and rotation
+        checkpointPosition = transform.position;
+        print(checkpointPosition);
+
         // Camera
         mainCamera.transform.position = cameraTransform.position;
         mainCamera.transform.rotation = cameraTransform.rotation;
@@ -41,6 +49,12 @@ public class Player : MonoBehaviour
         // Jumps
         jumpNumber = 0;
         jumpNumberMax = 2;
+
+        // Score
+        score = 0;
+
+        // Rigidbody
+        rigidBody = GetComponent<Rigidbody>();
     }
 
     void Movement() {
@@ -82,6 +96,40 @@ public class Player : MonoBehaviour
             if(hit.collider.tag == "Ground")
             {
                 jumpNumber = 0;
+            }
+        }
+    }
+
+    void Respawn() {
+        transform.position = checkpointPosition;
+        transform.rotation = new Quaternion(0, 0, 0, 0);
+    }
+
+    void OnTriggerEnter(Collider col) {
+        if(col.gameObject.tag == "Checkpoint")
+        {
+            checkpointPosition = col.transform.position;
+        }
+
+        if(col.gameObject.tag == "ZKill") 
+        {
+            Respawn();
+        }
+
+        if(col.gameObject.tag == "Coin")
+        {
+            bool isCollected = false;
+
+            if(isCollected)
+            {
+                return;
+            }
+            else
+            {
+                isCollected = true;
+                Destroy(col.gameObject);
+                GameManager.Instance.UpdateScore();
+                print(score);
             }
         }
     }

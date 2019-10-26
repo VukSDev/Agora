@@ -44,7 +44,8 @@
     <ImplicitlyExpandNETStandardFacades>false</ImplicitlyExpandNETStandardFacades>
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
-  <ItemGroup>     <Compile Include="Assets\Scripts\Player.cs" />
+  <ItemGroup>     <Compile Include="Assets\Scripts\GameManager.cs" />
+     <Compile Include="Assets\Scripts\Player.cs" />
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>D:/!UnityProjects/Agora/Agora/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>
